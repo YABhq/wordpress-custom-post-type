@@ -247,8 +247,13 @@ class CustomPostType
                     }
                 }
                 echo '</select>';
-            } else {
-                echo '<input type="' . $field_type . '" name="' . $field_name . '" id="' . $field_name . '" size="' . $field_size . '" value="' . esc_attr($field_value) . '">';
+            } 
+            elseif ($field_type === 'textarea')
+             {
+                 echo '<textarea rows="3" name="' . $field_name . '" id="' . $field_name . '" class="large-text code">' . esc_attr($field_value) . '</textarea>';
+             }
+            else {
+                echo '<input type="' . $field_type . '" name="' . $field_name . '" id="' . $field_name . '" size="' . $field_size . '" value="' . esc_attr($field_value) . '" data-lpignore="true">';
             }
             echo '</p>';
         }
