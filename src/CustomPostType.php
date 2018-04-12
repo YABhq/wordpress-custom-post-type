@@ -187,6 +187,18 @@ class CustomPostType
     }
 
     /**
+     * Register the existing taxonomy to the post type
+     * 
+     * @param string $taxonomy_name
+     */
+    public function add_existing_taxonomy($taxonomy_name)
+    {
+        add_action( 'init', function() use ($taxonomy_name) {
+            register_taxonomy_for_object_type($taxonomy_name, $this->post_type_name);
+        });
+    }
+
+    /**
      * API wrapper for add_meta_box so we can
      * call the function multiple times
      *
